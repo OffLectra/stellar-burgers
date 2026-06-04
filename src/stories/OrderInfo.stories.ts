@@ -42,7 +42,8 @@ export const DefaultOrderInfo: Story = {
       createdAt: '',
       updatedAt: '',
       number: 2,
-      ingredients: ['Булка', 'Начинка']
+      ingredients: ['Булка', 'Начинка'],
+      isPage: false
     }
   }
 };

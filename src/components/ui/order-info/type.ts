@@ -17,4 +17,5 @@ type TOrderInfo = {
   updatedAt: string;
   number: number;
   ingredients: string[];
+  isPage: boolean;
 };
