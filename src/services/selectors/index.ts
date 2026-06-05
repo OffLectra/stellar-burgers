@@ -1,6 +1,6 @@
 import { RootState } from '@services/store';
 
-// Èíãğåäèåíòû
+// Ğ˜Ğ½Ğ³Ñ€ĞµĞ´Ğ¸ĞµĞ½Ñ‚Ñ‹
 export const selectIngredients = (state: RootState) =>
   state.ingredients.ingredients;
 export const selectIngredientsLoading = (state: RootState) =>
@@ -8,7 +8,7 @@ export const selectIngredientsLoading = (state: RootState) =>
 export const selectIngredientsError = (state: RootState) =>
   state.ingredients.error;
 
-// Êîíñòğóêòîğ
+// ĞšĞ¾Ğ½ÑÑ‚Ñ€ÑƒĞºÑ‚Ğ¾Ñ€
 export const selectConstructorItems = (state: RootState) => ({
   bun: state.burgerConstructor.bun,
   ingredients: state.burgerConstructor.ingredients
@@ -18,7 +18,7 @@ export const selectConstructorBun = (state: RootState) =>
 export const selectConstructorIngredients = (state: RootState) =>
   state.burgerConstructor.ingredients;
 
-// Ïîëüçîâàòåëü
+// ĞŸĞ¾Ğ»ÑŒĞ·Ğ¾Ğ²Ğ°Ñ‚ĞµĞ»ÑŒ
 export const selectUser = (state: RootState) => state.user.user;
 export const selectIsAuthChecked = (state: RootState) =>
   state.user.isAuthChecked;
@@ -26,7 +26,7 @@ export const selectUserLoading = (state: RootState) => state.user.loading;
 export const selectUserError = (state: RootState) =>
   state.user.error ?? undefined;
 
-// Ëåíòà
+// Ğ›ĞµĞ½Ñ‚Ğ°
 export const selectFeeds = (state: RootState) => state.feeds;
 export const selectFeedsOrders = (state: RootState) => state.feeds.orders;
 export const selectFeedsTotal = (state: RootState) => state.feeds.total;
@@ -35,7 +35,7 @@ export const selectFeedsTotalToday = (state: RootState) =>
 export const selectFeedsLoading = (state: RootState) => state.feeds.loading;
 export const selectFeedsError = (state: RootState) => state.feeds.error;
 
-// Çàêàçû ïîëüçîâàòåëÿ
+// Ğ—Ğ°ĞºĞ°Ğ·Ñ‹ Ğ¿Ğ¾Ğ»ÑŒĞ·Ğ¾Ğ²Ğ°Ñ‚ĞµĞ»Ñ
 export const selectUserOrders = (state: RootState) => state.orders.orders;
 export const selectUserOrdersLoading = (state: RootState) =>
   state.orders.loading;

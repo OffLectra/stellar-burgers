@@ -8,7 +8,6 @@ import {
   selectUser
 } from '@selectors';
 import { orderBurgerThunk, clearOrderModal } from '@slices/ordersSlice';
-import { resetConstructor } from '@slices/burgerConstructorSlice';
 import { TConstructorIngredient } from '@utils-types';
 import { BurgerConstructorUI } from '@ui';
 
@@ -36,7 +35,6 @@ export const BurgerConstructor: FC = () => {
 
   const closeOrderModal = () => {
     dispatch(clearOrderModal());
-    dispatch(resetConstructor());
     navigate('/');
   };
 

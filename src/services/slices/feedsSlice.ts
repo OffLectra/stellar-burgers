@@ -38,7 +38,7 @@ const feedsSlice = createSlice({
         state.error = null;
       })
       .addCase(getFeedsThunk.rejected, (state, action) => {
-        state.error = action.error.message || '������ �������� �����';
+        state.error = action.error.message || 'Ошибка получения ленты';
         state.loading = false;
       });
   }

@@ -1,6 +1,4 @@
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from '@services/store';
-import { getIngredientsThunk } from '@slices/ingredientsSlice';
 import { selectIngredientsLoading, selectIngredientsError } from '@selectors';
 
 import styles from './constructor-page.module.css';
@@ -14,10 +12,6 @@ export const ConstructorPage: FC = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIngredientsLoading);
   const error = useSelector(selectIngredientsError);
-
-  useEffect(() => {
-    dispatch(getIngredientsThunk());
-  }, [dispatch]);
 
   if (isLoading) {
     return <Preloader />;

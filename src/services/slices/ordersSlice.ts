@@ -52,7 +52,7 @@ const ordersSlice = createSlice({
         state.error = null;
       })
       .addCase(getOrdersThunk.rejected, (state, action) => {
-        state.error = action.error.message || '������ �������� �������';
+        state.error = action.error.message || 'Ошибка получения заказов';
         state.loading = false;
       })
       // orderBurger
@@ -65,7 +65,7 @@ const ordersSlice = createSlice({
         state.orderRequest = false;
       })
       .addCase(orderBurgerThunk.rejected, (state, action) => {
-        state.error = action.error.message || '������ ���������� ������';
+        state.error = action.error.message || 'Ошибка оформления заказа';
         state.orderRequest = false;
       });
   }

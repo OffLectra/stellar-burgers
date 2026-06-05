@@ -84,7 +84,7 @@ const userSlice = createSlice({
         state.loading = false;
       })
       .addCase(registerUserThunk.rejected, (state, action) => {
-        state.error = action.error.message || 'Ошибка регистрации';
+        state.error = action.error.message || 'РћС€РёР±РєР° СЂРµРіРёСЃС‚СЂР°С†РёРё';
         state.loading = false;
       })
       // login
@@ -97,7 +97,7 @@ const userSlice = createSlice({
         state.loading = false;
       })
       .addCase(loginUserThunk.rejected, (state, action) => {
-        state.error = action.error.message || 'Ошибка входа';
+        state.error = action.error.message || 'РћС€РёР±РєР° РІС…РѕРґР°';
         state.loading = false;
       })
       // logout
@@ -110,7 +110,7 @@ const userSlice = createSlice({
         state.loading = false;
       })
       .addCase(logoutUserThunk.rejected, (state, action) => {
-        state.error = action.error.message || 'Ошибка выхода';
+        state.error = action.error.message || 'РћС€РёР±РєР° РІС‹С…РѕРґР°';
         state.loading = false;
       })
       // getUser
@@ -124,7 +124,7 @@ const userSlice = createSlice({
         state.isAuthChecked = true;
       })
       .addCase(getUserThunk.rejected, (state, action) => {
-        state.error = action.error.message || 'Ошибка получения пользователя';
+        state.error = action.error.message || 'РћС€РёР±РєР° РїРѕР»СѓС‡РµРЅРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ';
         state.loading = false;
         state.isAuthChecked = true;
       })
@@ -138,7 +138,7 @@ const userSlice = createSlice({
         state.loading = false;
       })
       .addCase(updateUserThunk.rejected, (state, action) => {
-        state.error = action.error.message || 'Ошибка обновления';
+        state.error = action.error.message || 'РћС€РёР±РєР° РѕР±РЅРѕРІР»РµРЅРёСЏ';
         state.loading = false;
       });
   }

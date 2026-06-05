@@ -38,7 +38,7 @@ const ingredientsSlice = createSlice({
         state.loading = false;
       })
       .addCase(getIngredientsThunk.rejected, (state, action) => {
-        state.error = action.error.message || 'Ошибка загрузки ингредиентов';
+        state.error = action.error.message || 'РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё РёРЅРіСЂРµРґРёРµРЅС‚РѕРІ';
         state.loading = false;
       });
   }

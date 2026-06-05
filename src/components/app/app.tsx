@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import { useDispatch } from '@services/store';
 import { getUserThunk } from '@slices/userSlice';
+import { getIngredientsThunk } from '@slices/ingredientsSlice';
 import { ConstructorPage } from '@pages';
 import { Feed } from '@pages';
 import { Login } from '@pages';
@@ -30,6 +31,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(getUserThunk());
+    dispatch(getIngredientsThunk());
   }, [dispatch]);
 
   const handleModalClose = () => navigate(-1);
