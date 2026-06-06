@@ -154,12 +154,12 @@ describe('burgerConstructorSlice', () => {
     test('перемещает ингредиент вверх (from > to)', () => {
       const stateWithItems = burgerConstructorReducer(
         { bun: null, ingredients: [] },
-        addIngredient(mainIngredient) // main-1
+        addIngredient(mainIngredient)
       );
       const s2 = burgerConstructorReducer(
         stateWithItems,
         addIngredient(sauceIngredient)
-      ); // sauce-1
+      );
       const s3 = burgerConstructorReducer(
         s2,
         addIngredient({
