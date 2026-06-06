@@ -17,16 +17,29 @@
     "jsx": "react-jsx",
     "types": ["node", "jest"],
     "baseUrl": ".",
-    "paths": {
-      "@pages": ["src/pages"],
-      "@components": ["src/components"],
-      "@ui": ["src/components/ui"],
-      "@ui-pages": ["src/components/ui/pages"],
-      "@utils-types": ["src/utils/types"],
-      "@api": ["src/utils/burger-api.ts"],
-      "@slices": ["src/services/slices"],
-      "@selectors": ["src/services/selectors"]
-    }
+  "paths": {
+    "@pages": ["src/pages"],
+    "@components": ["src/components"],
+    "@ui": ["src/components/ui"],
+    "@ui-pages": ["src/components/ui/pages"],
+    "@utils-types": ["src/utils/types"],
+    "@api": ["src/utils/burger-api.ts"],
+    "@slices": ["src/services/slices"],
+    "@selectors": ["src/services/selectors"],
+    "@services": ["src/services"],
+    "@utils": ["src/utils"],
+    "@images": ["src/images"],
+
+    "@services/*": ["src/services/*"],
+    "@slices/*": ["src/services/slices/*"],
+    "@selectors/*": ["src/services/selectors/*"],
+    "@ui/*": ["src/components/ui/*"],
+    "@ui-pages/*": ["src/components/ui/pages/*"],
+    "@utils/*": ["src/utils/*"],
+    "@images/*": ["src/images/*"],
+    "@components/*": ["src/components/*"],
+    "@pages/*": ["src/pages/*"]
+  }
   },
   "include": ["src"]
 }

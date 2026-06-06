@@ -1,8 +1,8 @@
 import { FC } from 'react';
-
+import clsx from 'clsx';
 import { Button, Input } from '@zlden/react-developer-burger-ui-components';
 import styles from './profile.module.css';
-import commonStyles from '../common.module.css';
+import commonStyles from '@ui-pages/common.module.css';
 
 import { ProfileUIProps } from './type';
 import { ProfileMenu } from '@components';
@@ -15,12 +15,12 @@ export const ProfileUI: FC<ProfileUIProps> = ({
   handleCancel,
   handleInputChange
 }) => (
-  <main className={`${commonStyles.container}`}>
-    <div className={`mt-30 mr-15 ${styles.menu}`}>
+  <main className={commonStyles.container}>
+    <div className={clsx('mt-30', 'mr-15', styles.menu)}>
       <ProfileMenu />
     </div>
     <form
-      className={`mt-30 ${styles.form} ${commonStyles.form}`}
+      className={clsx('mt-30', styles.form, commonStyles.form)}
       onSubmit={handleSubmit}
     >
       <>
@@ -80,7 +80,12 @@ export const ProfileUI: FC<ProfileUIProps> = ({
         )}
         {updateUserError && (
           <p
-            className={`${commonStyles.error} pt-5 text text_type_main-default`}
+            className={clsx(
+              commonStyles.error,
+              'pt-5',
+              'text',
+              'text_type_main-default'
+            )}
           >
             {updateUserError}
           </p>

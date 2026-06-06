@@ -1,13 +1,22 @@
 import React from 'react';
 import styles from './order-details.module.css';
-import doneImg from '../../../images/done.svg';
+import doneImg from '@images/done.svg';
+import clsx from 'clsx';
 import { OrderDetailsUIProps } from './type';
 
 export const OrderDetailsUI: React.FC<OrderDetailsUIProps> = ({
   orderNumber
 }) => (
   <>
-    <h2 className={`${styles.title} text text_type_digits-large mt-2 mb-4`}>
+    <h2
+      className={clsx(
+        styles.title,
+        'text',
+        'text_type_digits-large',
+        'mt-2',
+        'mb-4'
+      )}
+    >
       {orderNumber}
     </h2>
     <p className='text text_type_main-medium'>идентификатор заказа</p>
@@ -16,10 +25,10 @@ export const OrderDetailsUI: React.FC<OrderDetailsUIProps> = ({
       src={doneImg}
       alt='изображение статуса заказа.'
     />
-    <p className='text text_type_main-default mb-1'>
+    <p className={clsx(styles.text, 'text', 'text_type_main-default')}>
       Ваш заказ начали готовить
     </p>
-    <p className={`${styles.text} text text_type_main-default`}>
+    <p className={clsx(styles.text, 'text', 'text_type_main-default')}>
       Дождитесь готовности на орбитальной станции
     </p>
   </>
