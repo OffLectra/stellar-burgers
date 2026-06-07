@@ -20,7 +20,10 @@ export const BurgerConstructorUI: FC<BurgerConstructorUIProps> = ({
 }) => (
   <section className={styles.burger_constructor}>
     {constructorItems.bun ? (
-      <div className={clsx(styles.element, 'mb-4', 'mr-4')}>
+      <div
+        className={clsx(styles.element, 'mb-4', 'mr-4')}
+        data-testid='constructor-bun-top'
+      >
         <div className={styles.element_fullwidth}>
           <ConstructorElement
             type='top'
@@ -74,7 +77,10 @@ export const BurgerConstructorUI: FC<BurgerConstructorUIProps> = ({
       )}
     </ul>
     {constructorItems.bun ? (
-      <div className={clsx(styles.element, 'mt-4', 'mr-4')}>
+      <div
+        className={clsx(styles.element, 'mt-4', 'mr-4')}
+        data-testid='constructor-bun-bottom'
+      >
         <div className={styles.element_fullwidth}>
           <ConstructorElement
             type='bottom'

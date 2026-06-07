@@ -8,17 +8,16 @@ test.describe('Burger Constructor', () => {
     page: Page;
     context: BrowserContext;
   }) {
-    await page.route('**/api/auth/user', async (route) => {
-      await route.fulfill({
-        status: 200,
-        contentType: 'application/json',
-        body: JSON.stringify({
-          success: true,
-          user: { email: 'test@test.com', name: 'Test' }
-        })
-      });
+    await page.routeFromHAR('tests/hars/user.har', {
+        update: false,
+        notFound: 'abort',
+        url: '**/api/auth/user'
     });
-
+    await page.routeFromHAR('tests/hars/token.har', {
+        update: false,
+        notFound: 'abort',
+        url: '**/api/auth/token'
+    });
     await context.addCookies([
       {
         name: 'accessToken',
@@ -37,34 +36,21 @@ test.describe('Burger Constructor', () => {
     });
   }
 
-  async function setupOrderMock(page: Page) {
-    await page.route('**/api/orders', async (route) => {
-      await route.fulfill({
-        status: 200,
-        contentType: 'application/json',
-        body: JSON.stringify({
-          success: true,
-          order: {
-            _id: 'test-order-123',
-            status: 'done',
-            name: 'Space burger',
-            createdAt: '2025-01-01T00:00:00.000Z',
-            updatedAt: '2025-01-01T00:00:00.000Z',
-            number: 54321,
-            price: 2000
-          },
-          name: 'Space burger'
-        })
-      });
-    });
-  }
-
-    test.beforeEach(async ({ page }) => {
-    await page.routeFromHAR('tests/hars/ingredients.har', {
-        update: false,
-        notFound: 'fallback'
-    });
-    });
+test.beforeEach(async ({ page }) => {
+await page.route('**/api/**', async (route) => {
+    await route.abort('internetdisconnected');
+});
+await page.routeFromHAR('tests/hars/ingredients.har', {
+    update: false,
+    notFound: 'abort',
+    url: '**/api/ingredients'
+});
+await page.routeFromHAR('tests/hars/orders.har', {
+    update: false,
+    notFound: 'abort',
+    url: '**/api/orders'
+});
+});
   test.afterEach(async ({ context, page }) => {
     await context.clearCookies();
   });
@@ -99,16 +85,16 @@ test.describe('Burger Constructor', () => {
   await expect(page.locator('#modals [class*="modal"]')).toHaveCount(0);
 });
 
-  test('4. Добавление булки в конструктор', async ({ page }) => {
-    await page.goto('/');
-    await page.getByRole('button', { name: 'Добавить' }).first().click();
-    await expect(
-      page.getByText('Краторная булка N-200i (верх)')
-    ).toBeVisible();
-    await expect(
-      page.getByText('Краторная булка N-200i (низ)')
-    ).toBeVisible();
-  });
+    test('4. Добавление булки в конструктор', async ({ page }) => {
+      await page.goto('/');
+      await page.getByRole('button', { name: 'Добавить' }).first().click();
+      await expect(
+        page.getByTestId('constructor-bun-top')
+      ).toBeVisible();
+      await expect(
+        page.getByTestId('constructor-bun-bottom')
+      ).toBeVisible();
+    });
 
   test('5. Добавление начинки в конструктор', async ({ page }) => {
     await page.goto('/');
@@ -119,9 +105,7 @@ test.describe('Burger Constructor', () => {
       .getByRole('button', { name: 'Добавить' })
       .click();
     await expect(
-      page
-        .locator('.constructor-element__text')
-        .filter({ hasText: 'Биокотлета из марсианской Магнолии' })
+      page.getByTestId('constructor-ingredient').filter({ hasText: 'Биокотлета из марсианской Магнолии' })
     ).toBeVisible();
   });
 
@@ -134,13 +118,13 @@ test.describe('Burger Constructor', () => {
       .getByRole('button', { name: 'Добавить' })
       .click();
     await page
-      .locator('.constructor-element__row')
+      .getByTestId('constructor-ingredient')
       .filter({ hasText: 'Биокотлета из марсианской Магнолии' })
       .locator('.constructor-element__action')
       .click();
     await expect(
       page
-        .locator('.constructor-element__row')
+        .getByTestId('constructor-ingredient')
         .filter({ hasText: 'Биокотлета из марсианской Магнолии' })
     ).toHaveCount(0);
   });
@@ -150,7 +134,6 @@ test.describe('Burger Constructor', () => {
     context
   }) => {
     await setupAuth({ page, context });
-    await setupOrderMock(page);
     await page.goto('/');
 
     await page.getByRole('button', { name: 'Добавить' }).first().click();
@@ -186,7 +169,6 @@ test.describe('Burger Constructor', () => {
     context
   }) => {
     await setupAuth({ page, context });
-    await setupOrderMock(page);
     await page.goto('/');
 
     await page.getByRole('button', { name: 'Добавить' }).first().click();

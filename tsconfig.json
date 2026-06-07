@@ -27,7 +27,7 @@
     "@slices": ["src/services/slices"],
     "@selectors": ["src/services/selectors"],
     "@services": ["src/services"],
-    "@utils": ["src/utils"],
+    "@utils/*": ["src/utils/*"], 
     "@images": ["src/images"],
 
     "@services/*": ["src/services/*"],
@@ -35,7 +35,6 @@
     "@selectors/*": ["src/services/selectors/*"],
     "@ui/*": ["src/components/ui/*"],
     "@ui-pages/*": ["src/components/ui/pages/*"],
-    "@utils/*": ["src/utils/*"],
     "@images/*": ["src/images/*"],
     "@components/*": ["src/components/*"],
     "@pages/*": ["src/pages/*"]
